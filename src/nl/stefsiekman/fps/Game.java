@@ -8,6 +8,7 @@ import org.lwjgl.LWJGLException;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.DisplayMode;
 import org.lwjgl.opengl.GL11;
+import org.lwjgl.util.glu.GLU;
 import org.newdawn.slick.opengl.TextureImpl;
 
 public class Game {
@@ -22,6 +23,7 @@ public class Game {
 	public Game(){
 		instance = this;
 		initGL();
+		init2D();
 		
 		while(!Display.isCloseRequested()){
 			clearScreen();			
@@ -36,9 +38,27 @@ public class Game {
 			Display.setDisplayMode(new DisplayMode(WIDTH, HEIGHT));
 			Display.setTitle("First Person Shooter");
 			Display.create();
+			
+			GL11.glEnable(GL11.GL_BLEND);
+			GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
 		}catch(LWJGLException e){
 			e.printStackTrace();
 		}
+	}
+	
+	public void init2D(){
+		GL11.glMatrixMode(GL11.GL_PROJECTION);
+		GL11.glLoadIdentity();
+		GL11.glOrtho(0, WIDTH, HEIGHT, 0, 1, -1);
+		GL11.glMatrixMode(GL11.GL_MODELVIEW);
+		GL11.glLoadIdentity();
+	}
+	
+	public void init3D(){
+		GL11.glMatrixMode(GL11.GL_PROJECTION);
+		GL11.glLoadIdentity();
+		GLU.gluPerspective(100, (float) WIDTH / HEIGHT, 0.001f, 1000);
+		GL11.glMatrixMode(GL11.GL_MODELVIEW);
 	}
 	
 	private void clearScreen(){
