@@ -4,6 +4,8 @@ import java.io.File;
 
 import javax.swing.JOptionPane;
 
+import nl.stefsiekman.fps.state.State;
+
 import org.lwjgl.LWJGLException;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.DisplayMode;
@@ -26,7 +28,9 @@ public class Game {
 		init2D();
 		
 		while(!Display.isCloseRequested()){
-			clearScreen();			
+			clearScreen();
+			
+			State.call();
 			
 			Display.update();
 			Display.sync(60);
