@@ -10,7 +10,7 @@ import org.lwjgl.opengl.GL11;
 
 public class TextField extends Component {
 	
-	private String text;
+	private String text = "";
 	private long last;
 	private boolean cursor;
 	
