@@ -47,6 +47,14 @@ public abstract class Component {
 		actionlisteners.add(actionlistener);
 	}
 	
+	public int getWidth(){
+		return width;
+	}
+	
+	public int getHeight(){
+		return height;
+	}
+	
 	public Vector2i getLocation(){
 		return location;
 	}
@@ -87,11 +95,11 @@ public abstract class Component {
 		colors.put("border_pressed", bordercolor);
 	}
 	
-	public Color getcolor(){
+	public Color getColor(){
 		return colors.get("normal_normal");
 	}
 	
-	public void setcolor(Color color){
+	public void setColor(Color color){
 		colors.put("normal_normal", color);
 	}
 	
@@ -137,11 +145,11 @@ public abstract class Component {
 		return hovered;
 	}
 	
-	public void init(){
+	protected void init(){
 		selected = null;
 	}
 	
-	public void update(){
+	protected void update(){
 		state = "normal";
 		hovered = false;
 		if(Mouse.getX() >= location.x && Mouse.getX() <= location.x + width){
@@ -167,7 +175,7 @@ public abstract class Component {
 		extraUpdate();
 	}
 	
-	public void render(){
+	protected void render(){
 		if(bordersize >= 1){
 			getColor("border").bind();
 			
