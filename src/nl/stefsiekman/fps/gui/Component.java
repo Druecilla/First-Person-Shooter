@@ -17,7 +17,7 @@ public abstract class Component {
 	protected int width;
 	protected int height;
 	protected HashMap<String, Color> colors = new HashMap<String, Color>();
-	private int bordersize = 1;
+	protected int bordersize = 1;
 	private String state = "normal";
 	private ArrayList<ActionListener> actionlisteners = new ArrayList<ActionListener>();
 	private boolean mousedown;
