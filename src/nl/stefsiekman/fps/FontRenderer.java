@@ -8,7 +8,7 @@ public class FontRenderer {
 	
 	private static TrueTypeFont font;
 	
-	public FontRenderer(){
+	public static void init(){
 		Font awt = new Font("Times", Font.PLAIN, 14);
 		font = new TrueTypeFont(awt, true);
 	}
