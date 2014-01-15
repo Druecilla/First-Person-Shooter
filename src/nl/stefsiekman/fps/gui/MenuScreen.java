@@ -33,6 +33,13 @@ public abstract class MenuScreen extends GameState {
 	}
 	
 	@Override
+	public void init(){
+		for(Component component : components){
+			component.init();
+		}
+	}
+	
+	@Override
 	public void update(){
 		for(Component component : components){
 			component.update();

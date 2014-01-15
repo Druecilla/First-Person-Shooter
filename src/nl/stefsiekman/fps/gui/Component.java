@@ -137,6 +137,10 @@ public abstract class Component {
 		return hovered;
 	}
 	
+	public void init(){
+		selected = null;
+	}
+	
 	public void update(){
 		state = "normal";
 		hovered = false;
