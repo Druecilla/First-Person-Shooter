@@ -70,7 +70,6 @@ public class Game {
 		GL11.glClear(GL11.GL_COLOR_BUFFER_BIT | GL11.GL_DEPTH_BUFFER_BIT);
 		TextureImpl.bindNone();
 		GL11.glColor3f(1.0f, 1.0f, 1.0f);
-		GL11.glClearColor(1.0f, 1.0f, 0.0f, 0.0f);
 	}
 	
 	public static Game getInstance(){
