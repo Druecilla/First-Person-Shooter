@@ -7,6 +7,7 @@ import javax.swing.JOptionPane;
 import nl.stefsiekman.fps.state.State;
 
 import org.lwjgl.LWJGLException;
+import org.lwjgl.Sys;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.DisplayMode;
 import org.lwjgl.opengl.GL11;
@@ -70,6 +71,10 @@ public class Game {
 		GL11.glClear(GL11.GL_COLOR_BUFFER_BIT | GL11.GL_DEPTH_BUFFER_BIT);
 		TextureImpl.bindNone();
 		GL11.glColor3f(1.0f, 1.0f, 1.0f);
+	}
+	
+	public long getTime(){
+		return (Sys.getTime() * 1000) / Sys.getTimerResolution();
 	}
 	
 	public static Game getInstance(){
