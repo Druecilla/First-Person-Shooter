@@ -1,6 +1,8 @@
 package nl.stefsiekman.fps.gui;
 
 import nl.stefsiekman.fps.Color;
+import nl.stefsiekman.fps.FontRenderer;
+import nl.stefsiekman.fps.Game;
 
 import org.lwjgl.opengl.GL11;
 import org.newdawn.slick.opengl.Texture;
@@ -78,7 +80,8 @@ public class Button extends Component {
 		GL11.glVertex2i(location.x, location.y + height);
 		GL11.glEnd();
 		
-		// draw the text
+		FontRenderer.drawString(location.x + (width / 2 - FontRenderer.getWidth(text) / 2), location.y + (height / 2 - FontRenderer.getHeight() / 2), text, getColor("text"));
+
 	}
 	
 	@Override
