@@ -83,8 +83,8 @@ public class Game {
 	
 	public static void main(String[] args){
 		try{
-			gamefolder = new File(args[0]); //gives problems when there are spaces in the name
-			launcher = new File(args[1]); //gives problems when there are spaces in the name
+			gamefolder = new File(args[0]); // gives problems when there are spaces in the name
+			launcher = new File(args[1]); // gives problems when there are spaces in the name
 			
 			System.setProperty("org.lwjgl.librarypath", new File(gamefolder, "natives").getAbsolutePath());
 			
