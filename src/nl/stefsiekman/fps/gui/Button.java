@@ -2,7 +2,6 @@ package nl.stefsiekman.fps.gui;
 
 import nl.stefsiekman.fps.Color;
 import nl.stefsiekman.fps.FontRenderer;
-import nl.stefsiekman.fps.Game;
 
 import org.lwjgl.opengl.GL11;
 import org.newdawn.slick.opengl.Texture;
