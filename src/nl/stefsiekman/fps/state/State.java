@@ -2,13 +2,10 @@ package nl.stefsiekman.fps.state;
 
 import java.util.HashMap;
 
-import nl.stefsiekman.fps.state.GameState;
-
 public class State {
 	
 	public enum States {
-		MAIN_MENU, SINGLEPLAYER, SINGLEPLAYER_MENU, MULTIPLAYER,
-		MULTIPLAYER_MENU, PERSP_TEST
+		MAIN_MENU, SINGLEPLAYER, SINGLEPLAYER_MENU, MULTIPLAYER, MULTIPLAYER_MENU, PERSP_TEST
 	}
 	
 	private static States currentState = States.MAIN_MENU;
