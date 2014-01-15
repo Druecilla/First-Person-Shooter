@@ -19,6 +19,8 @@ public class Game {
 	public static int WIDTH = 800;
 	public static int HEIGHT = 800;
 	
+	private boolean running = true;
+	
 	private static Game instance;
 	private static File launcher;
 	private static File gamefolder;
@@ -28,7 +30,7 @@ public class Game {
 		initGL();
 		init2D();
 		
-		while(!Display.isCloseRequested()){
+		while(!Display.isCloseRequested() && running){
 			clearScreen();
 			
 			State.call();
@@ -36,6 +38,9 @@ public class Game {
 			Display.update();
 			Display.sync(60);
 		}
+		
+		Display.destroy();
+		System.exit(0);
 	}
 	
 	private void initGL(){
@@ -78,6 +83,10 @@ public class Game {
 	
 	public long getTime(){
 		return (Sys.getTime() * 1000) / Sys.getTimerResolution();
+	}
+	
+	public void quit(){
+		running = false;
 	}
 	
 	public static Game getInstance(){
