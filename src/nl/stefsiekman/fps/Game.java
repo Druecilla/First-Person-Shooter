@@ -34,6 +34,7 @@ public class Game {
 		init2D();
 		State.addState(State.States.MAIN_MENU, new StateMainMenu());
 		State.addState(State.States.MULTIPLAYER_MENU, new StateMultiplayerMenu());
+		State.addState(State.States.SINGLEPLAYER_MENU, new StateMultiplayerMenu());
 		State.setState(State.States.MAIN_MENU);
 		
 		while(!Display.isCloseRequested() && running){
