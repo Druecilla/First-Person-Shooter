@@ -5,6 +5,7 @@ import java.io.File;
 import javax.swing.JOptionPane;
 
 import nl.stefsiekman.fps.state.State;
+import nl.stefsiekman.fps.state.StateMainMenu;
 
 import org.lwjgl.LWJGLException;
 import org.lwjgl.Sys;
@@ -22,6 +23,7 @@ public class Game {
 	private boolean running = true;
 	
 	private static Game instance;
+	@SuppressWarnings("unused")
 	private static File launcher;
 	private static File gamefolder;
 	
@@ -29,6 +31,8 @@ public class Game {
 		instance = this;
 		initGL();
 		init2D();
+		State.addState(State.States.MAIN_MENU, new StateMainMenu());
+		State.setState(State.States.MAIN_MENU);
 		
 		while(!Display.isCloseRequested() && running){
 			clearScreen();
