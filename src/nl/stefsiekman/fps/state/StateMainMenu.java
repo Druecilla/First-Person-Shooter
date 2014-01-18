@@ -40,15 +40,15 @@ public class StateMainMenu extends MenuScreen implements ActionListener {
 	@Override
 	public void ActionPerformed(ActionEvent e){
 		if(e.getSource() == singleplayer){
-			
+			State.setState(State.States.SINGLEPLAYER_MENU);
 		}
 		
 		if(e.getSource() == multiplayer){
-			
+			State.setState(State.States.MULTIPLAYER_MENU);
 		}
 		
 		if(e.getSource() == options){
-			
+			State.setState(State.States.OPTIONS);
 		}
 		
 		if(e.getSource() == quit){
