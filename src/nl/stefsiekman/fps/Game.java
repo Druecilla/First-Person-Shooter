@@ -43,6 +43,8 @@ public class Game {
 		State.setState(State.States.MAIN_MENU);
 		
 		while(!Display.isCloseRequested() && running){
+			Time.updateDelta();
+			
 			clearScreen();
 			
 			State.call();
