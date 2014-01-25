@@ -4,10 +4,12 @@ import java.io.File;
 
 import javax.swing.JOptionPane;
 
+import nl.stefsiekman.fps.mapa.MapArchives;
 import nl.stefsiekman.fps.state.State;
 import nl.stefsiekman.fps.state.StateMainMenu;
 import nl.stefsiekman.fps.state.StateMultiplayerMenu;
 import nl.stefsiekman.fps.state.StateOptions;
+import nl.stefsiekman.fps.state.StateSingleplayerMenu;
 
 import org.lwjgl.LWJGLException;
 import org.lwjgl.Sys;
@@ -33,9 +35,10 @@ public class Game {
 		instance = this;
 		initGL();
 		init2D();
+		MapArchives.loadMaps();
 		State.addState(State.States.MAIN_MENU, new StateMainMenu());
 		State.addState(State.States.MULTIPLAYER_MENU, new StateMultiplayerMenu());
-		State.addState(State.States.SINGLEPLAYER_MENU, new StateMultiplayerMenu());
+		State.addState(State.States.SINGLEPLAYER_MENU, new StateSingleplayerMenu());
 		State.addState(State.States.OPTIONS, new StateOptions());
 		State.setState(State.States.MAIN_MENU);
 		
@@ -92,6 +95,10 @@ public class Game {
 	
 	public long getTime(){
 		return (Sys.getTime() * 1000) / Sys.getTimerResolution();
+	}
+	
+	public File getGameFolder(){
+		return gamefolder;
 	}
 	
 	public void quit(){
