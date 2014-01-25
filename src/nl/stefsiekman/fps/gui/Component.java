@@ -55,6 +55,11 @@ public abstract class Component {
 		return height;
 	}
 	
+	public void setSize(int width, int height){
+		this.width = width;
+		this.height = height;
+	}
+	
 	public Vector2i getLocation(){
 		return location;
 	}
