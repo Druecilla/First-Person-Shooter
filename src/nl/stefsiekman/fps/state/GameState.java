@@ -10,7 +10,4 @@ public abstract class GameState {
 	
 	public abstract void render();
 	
-	// To be overridden:
-	public void openWorld(GameWorld w) {}
-	
 }

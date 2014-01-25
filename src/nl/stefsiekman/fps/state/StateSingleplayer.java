@@ -1,11 +1,6 @@
 package nl.stefsiekman.fps.state;
 
-import nl.stefsiekman.fps.Time;
-import nl.stefsiekman.fps.math.Vector3f;
-import nl.stefsiekman.fps.world.Camera;
 import nl.stefsiekman.fps.world.GameWorld;
-import nl.stefsiekman.fps.world.Mesh;
-import nl.stefsiekman.fps.world.Vertex;
 
 public class StateSingleplayer extends GameState {
 
@@ -22,7 +17,10 @@ public class StateSingleplayer extends GameState {
 
 	@Override
 	public void render() {
+		if(world == null)
+			return;
 		
+		world.render();
 	}
 	
 	public void openWorld(GameWorld world) {

@@ -5,6 +5,7 @@ import nl.stefsiekman.fps.mapa.MapArchives;
 import nl.stefsiekman.fps.math.Vector3f;
 import nl.stefsiekman.fps.state.State;
 import nl.stefsiekman.fps.state.StateLoadMap;
+import nl.stefsiekman.fps.state.StateSingleplayer;
 import nl.stefsiekman.fps.world.GameWorld;
 
 public class LoadMap {
@@ -24,7 +25,7 @@ public class LoadMap {
 			@Override
 			public void run() {
 				GameWorld world = new GameWorld(new Vector3f(100, 100, 100));
-				State.getState(State.States.SINGLEPLAYER).openWorld(world);
+				((StateSingleplayer)State.getState(State.States.SINGLEPLAYER)).openWorld(world);
 				
 				State.setState(State.States.SINGLEPLAYER);
 			}
