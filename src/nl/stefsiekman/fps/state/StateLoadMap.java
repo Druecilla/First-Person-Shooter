@@ -1,6 +1,8 @@
 package nl.stefsiekman.fps.state;
 
-public class StateLoadMap {
+import nl.stefsiekman.fps.gui.MenuScreen;
+
+public class StateLoadMap extends MenuScreen{
 	
 	public StateLoadMap(){
 		
