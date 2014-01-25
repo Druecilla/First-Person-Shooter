@@ -2,6 +2,7 @@ package nl.stefsiekman.fps.mapa;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipException;
 import java.util.zip.ZipFile;
@@ -15,6 +16,7 @@ public class MapArchive {
 	private ZipFile zip;
 	private Texture icon;
 	private ZipEntry introfile;
+	private ZipEntry mapfile;
 	
 	public MapArchive(File file){
 		this.file = file;
@@ -28,6 +30,8 @@ public class MapArchive {
 				return "Unable to load icon";
 			}else if(!checkIntro()){
 				return "Unable to load intro";
+			}else if(!checkMap()){
+				return "Unable to load map";
 			}else{
 				return "ok";
 			}
@@ -72,6 +76,21 @@ public class MapArchive {
 		}
 	}
 	
+	private boolean checkMap(){
+		ZipEntry mapfile;
+		
+		if((mapfile = zip.getEntry("main.map")) != null){
+			if(!mapfile.isDirectory()){
+				this.mapfile = mapfile;
+				return true;
+			}else{
+				return false;
+			}
+		}else{
+			return false;
+		}
+	}
+	
 	public String getName(){
 		return "lol";
 	}
@@ -86,5 +105,9 @@ public class MapArchive {
 	
 	public Texture getIntro() throws IOException{
 		return TextureLoader.getTexture("PNG", zip.getInputStream(introfile));
+	}
+	
+	public InputStream getMap() throws IOException{
+		return zip.getInputStream(mapfile);
 	}
 }
