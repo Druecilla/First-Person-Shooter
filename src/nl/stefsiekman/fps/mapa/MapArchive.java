@@ -76,6 +76,10 @@ public class MapArchive {
 		return "lol";
 	}
 	
+	public String getLongName(){
+		return "heyho";
+	}
+	
 	public Texture getIcon(){
 		return icon;
 	}
