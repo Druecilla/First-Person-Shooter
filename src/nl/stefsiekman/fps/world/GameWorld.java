@@ -48,5 +48,9 @@ public class GameWorld {
 	public static void setCamera(Camera camera) {
 		GameWorld.camera = camera;
 	}
+	
+	public static List<GameObject> loadWorldObjects(String file) {
+		return null;
+	}
 
 }

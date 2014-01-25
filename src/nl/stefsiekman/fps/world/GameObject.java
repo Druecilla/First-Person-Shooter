@@ -1,8 +1,14 @@
 package nl.stefsiekman.fps.world;
 
-import nl.stefsiekman.fps.math.Vector3f;
+import static org.lwjgl.opengl.GL11.glPopMatrix;
+import static org.lwjgl.opengl.GL11.glPushMatrix;
+import static org.lwjgl.opengl.GL11.glRotatef;
+import static org.lwjgl.opengl.GL11.glScalef;
+import static org.lwjgl.opengl.GL11.glTranslatef;
 
-import static org.lwjgl.opengl.GL11.*;
+import java.util.List;
+
+import nl.stefsiekman.fps.math.Vector3f;
 
 public class GameObject {
 	
