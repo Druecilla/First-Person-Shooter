@@ -1,13 +1,21 @@
 package nl.stefsiekman.fps.world;
 
+import static org.lwjgl.opengl.GL11.GL_FILL;
+import static org.lwjgl.opengl.GL11.GL_FRONT_AND_BACK;
+import static org.lwjgl.opengl.GL11.GL_LINE;
+import static org.lwjgl.opengl.GL11.glPolygonMode;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import nl.stefsiekman.fps.Game;
 import nl.stefsiekman.fps.math.Vector3f;
-
-import static org.lwjgl.opengl.GL11.*;
 
 public class GameWorld {
 	
 	private static Camera camera;
+	
+	private List<GameObject> objects = new ArrayList<>();
 	
 	public GameWorld(Vector3f size) {
 		
@@ -24,6 +32,13 @@ public class GameWorld {
 		} else {
 			glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 		}
+		
+		for(GameObject object : objects)
+			object.render();
+	}
+	
+	public void addStaticObject(GameObject object) {
+		objects.add(object);
 	}
 
 	public static Camera getCamera() {
