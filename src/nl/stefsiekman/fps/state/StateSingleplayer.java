@@ -16,6 +16,7 @@ public class StateSingleplayer extends GameState {
 	public void init() {
 		world = new GameWorld(new Vector3f(1000, 1000, 100));
 		GameWorld.setCamera(new Camera(new Vector3f(0, 0, 0), new Vector3f(30, 0, 0)));
+		GameWorld.getCamera().setWireFrameMode(false);
 		
 		Vertex[] vertices = new Vertex[] {
 			new Vertex(new Vector3f(-1, -1, -10)),

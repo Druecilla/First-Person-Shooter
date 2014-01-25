@@ -12,6 +12,8 @@ public class Camera {
 	public float zNear = 0.1f;
 	public float zFar = 1000f;
 	
+	public boolean wireFrameMode = false;
+	
 	public Camera(float x, float y, float z) {
 		this(new Vector3f(x, y, z));
 	}
@@ -79,6 +81,14 @@ public class Camera {
 
 	public void setzFar(float zFar) {
 		this.zFar = zFar;
+	}
+
+	public boolean isWireFrameMode() {
+		return wireFrameMode;
+	}
+
+	public void setWireFrameMode(boolean wireFrameMode) {
+		this.wireFrameMode = wireFrameMode;
 	}
 	
 }
