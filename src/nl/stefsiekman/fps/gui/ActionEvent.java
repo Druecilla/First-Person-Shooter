@@ -11,4 +11,8 @@ public class ActionEvent {
 	public Component getSource(){
 		return source;
 	}
+	
+	public String getActionCommand(){
+		return source.actioncommand;
+	}
 }
