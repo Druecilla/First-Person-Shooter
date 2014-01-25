@@ -22,6 +22,7 @@ public abstract class Component {
 	private ArrayList<ActionListener> actionlisteners = new ArrayList<ActionListener>();
 	private boolean mousedown;
 	private boolean hovered;
+	protected String actioncommand = "";
 	protected static Component selected;
 	
 	protected abstract void extraUpdate();
@@ -45,6 +46,10 @@ public abstract class Component {
 	
 	public void addActionListener(ActionListener actionlistener){
 		actionlisteners.add(actionlistener);
+	}
+	
+	public void setActionCommand(String actioncommand){
+		this.actioncommand = actioncommand;
 	}
 	
 	public int getWidth(){
