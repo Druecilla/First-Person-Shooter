@@ -1,5 +1,22 @@
 package nl.stefsiekman.fps;
 
+import static org.lwjgl.opengl.GL11.GL_BLEND;
+import static org.lwjgl.opengl.GL11.GL_COLOR_BUFFER_BIT;
+import static org.lwjgl.opengl.GL11.GL_DEPTH_BUFFER_BIT;
+import static org.lwjgl.opengl.GL11.GL_MODELVIEW;
+import static org.lwjgl.opengl.GL11.GL_ONE_MINUS_SRC_ALPHA;
+import static org.lwjgl.opengl.GL11.GL_PROJECTION;
+import static org.lwjgl.opengl.GL11.GL_SRC_ALPHA;
+import static org.lwjgl.opengl.GL11.glBlendFunc;
+import static org.lwjgl.opengl.GL11.glClear;
+import static org.lwjgl.opengl.GL11.glColor3f;
+import static org.lwjgl.opengl.GL11.glEnable;
+import static org.lwjgl.opengl.GL11.glLoadIdentity;
+import static org.lwjgl.opengl.GL11.glMatrixMode;
+import static org.lwjgl.opengl.GL11.glOrtho;
+import static org.lwjgl.opengl.GL11.glRotatef;
+import static org.lwjgl.opengl.GL11.glTranslatef;
+
 import java.io.File;
 
 import javax.swing.JOptionPane;
@@ -10,6 +27,7 @@ import nl.stefsiekman.fps.state.StateLoadMap;
 import nl.stefsiekman.fps.state.StateMainMenu;
 import nl.stefsiekman.fps.state.StateMultiplayerMenu;
 import nl.stefsiekman.fps.state.StateOptions;
+import nl.stefsiekman.fps.state.StateSingleplayer;
 import nl.stefsiekman.fps.state.StateSingleplayerMenu;
 import nl.stefsiekman.fps.world.Camera;
 
@@ -21,12 +39,10 @@ import org.lwjgl.opengl.GL11;
 import org.lwjgl.util.glu.GLU;
 import org.newdawn.slick.opengl.TextureImpl;
 
-import static org.lwjgl.opengl.GL11.*;
-
 public class Game {
 	
 	public static int WIDTH = 800;
-	public static int HEIGHT = 800;
+	public static int HEIGHT = 600;
 	
 	private boolean running = true;
 	
@@ -45,7 +61,8 @@ public class Game {
 		State.addState(State.States.SINGLEPLAYER_MENU, new StateSingleplayerMenu());
 		State.addState(State.States.OPTIONS, new StateOptions());
 		State.addState(State.States.LOADMAP, new StateLoadMap());
-		State.setState(State.States.MAIN_MENU);
+		State.addState(State.States.SINGLEPLAYER, new StateSingleplayer());
+		State.setState(State.States.SINGLEPLAYER);
 		
 		while(!Display.isCloseRequested() && running){
 			Time.updateDelta();
@@ -94,9 +111,9 @@ public class Game {
 		glLoadIdentity();
 		
 		// Translate camera
-		glTranslatef(cam.position.x, cam.position.y, cam.position.z);
-		glRotatef(cam.rotation.z, 1, 0, 0);
-		glRotatef(cam.rotation.z, 0, 1, 0);
+		glTranslatef(-cam.position.x, -cam.position.y, -cam.position.z);
+		glRotatef(cam.rotation.x, 1, 0, 0);
+		glRotatef(cam.rotation.y, 0, 1, 0);
 		glRotatef(cam.rotation.z, 0, 0, 1);
 	}
 	
