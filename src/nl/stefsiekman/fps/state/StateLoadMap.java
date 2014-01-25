@@ -13,8 +13,8 @@ public class StateLoadMap extends MenuScreen{
 	private ProgressBar progress = new ProgressBar();
 	
 	public StateLoadMap(){
-		progress.setLocation(new Vector2i(10, Game.HEIGHT - 10));
-		
+		progress.setLocation(new Vector2i(10, Game.HEIGHT - 20));
+		progress.setSize(Game.WIDTH - 20, 10);
 		add(progress);
 	}
 	
