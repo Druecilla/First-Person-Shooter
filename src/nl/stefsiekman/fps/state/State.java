@@ -23,6 +23,10 @@ public class State {
 		}
 	}
 	
+	public static GameState getState(States state){
+		return states.get(state);
+	}
+	
 	public static void call(){
 		if(states.get(currentState) != null){
 			states.get(currentState).update();
