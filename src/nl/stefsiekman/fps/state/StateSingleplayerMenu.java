@@ -8,7 +8,7 @@ import nl.stefsiekman.fps.math.Vector2i;
 
 public class StateSingleplayerMenu extends MenuScreen{
 	
-	private int maps = 1;
+	private int maps = 0;
 	
 	public StateSingleplayerMenu(){
 		Button mapbutton;
@@ -17,7 +17,8 @@ public class StateSingleplayerMenu extends MenuScreen{
 			mapbutton = new Button();
 			
 			mapbutton.setTexture(map.getIcon());
-			mapbutton.setLocation(new Vector2i(30, maps * 30));
+			mapbutton.setLocation(new Vector2i(30, maps * 100 + 10));
+			mapbutton.setSize(100, 100);
 			
 			add(mapbutton);
 			maps += 1;
