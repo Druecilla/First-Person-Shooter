@@ -3,6 +3,8 @@ package nl.stefsiekman.fps;
 import static org.lwjgl.opengl.GL11.GL_BLEND;
 import static org.lwjgl.opengl.GL11.GL_COLOR_BUFFER_BIT;
 import static org.lwjgl.opengl.GL11.GL_DEPTH_BUFFER_BIT;
+import static org.lwjgl.opengl.GL11.GL_FILL;
+import static org.lwjgl.opengl.GL11.GL_FRONT_AND_BACK;
 import static org.lwjgl.opengl.GL11.GL_MODELVIEW;
 import static org.lwjgl.opengl.GL11.GL_ONE_MINUS_SRC_ALPHA;
 import static org.lwjgl.opengl.GL11.GL_PROJECTION;
@@ -14,6 +16,7 @@ import static org.lwjgl.opengl.GL11.glEnable;
 import static org.lwjgl.opengl.GL11.glLoadIdentity;
 import static org.lwjgl.opengl.GL11.glMatrixMode;
 import static org.lwjgl.opengl.GL11.glOrtho;
+import static org.lwjgl.opengl.GL11.glPolygonMode;
 import static org.lwjgl.opengl.GL11.glRotatef;
 import static org.lwjgl.opengl.GL11.glTranslatef;
 
@@ -62,7 +65,7 @@ public class Game {
 		State.addState(State.States.OPTIONS, new StateOptions());
 		State.addState(State.States.LOADMAP, new StateLoadMap());
 		State.addState(State.States.SINGLEPLAYER, new StateSingleplayer());
-		State.setState(State.States.SINGLEPLAYER);
+		State.setState(State.States.MAIN_MENU);
 		
 		while(!Display.isCloseRequested() && running){
 			Time.updateDelta();
@@ -101,6 +104,8 @@ public class Game {
 		glOrtho(0, WIDTH, HEIGHT, 0, 1, -1);
 		glMatrixMode(GL_MODELVIEW);
 		glLoadIdentity();
+		
+		glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 	}
 	
 	public void init3D(Camera cam){
