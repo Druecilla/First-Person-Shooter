@@ -5,7 +5,7 @@ import java.util.HashMap;
 public class State {
 	
 	public enum States {
-		MAIN_MENU, SINGLEPLAYER, SINGLEPLAYER_MENU, MULTIPLAYER, MULTIPLAYER_MENU, OPTIONS
+		MAIN_MENU, SINGLEPLAYER, SINGLEPLAYER_MENU, MULTIPLAYER, MULTIPLAYER_MENU, OPTIONS, LOADMAP
 	}
 	
 	private static States currentState = States.MAIN_MENU;
