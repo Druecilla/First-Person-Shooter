@@ -6,6 +6,7 @@ import javax.swing.JOptionPane;
 
 import nl.stefsiekman.fps.mapa.MapArchives;
 import nl.stefsiekman.fps.state.State;
+import nl.stefsiekman.fps.state.StateLoadMap;
 import nl.stefsiekman.fps.state.StateMainMenu;
 import nl.stefsiekman.fps.state.StateMultiplayerMenu;
 import nl.stefsiekman.fps.state.StateOptions;
@@ -43,6 +44,7 @@ public class Game {
 		State.addState(State.States.MULTIPLAYER_MENU, new StateMultiplayerMenu());
 		State.addState(State.States.SINGLEPLAYER_MENU, new StateSingleplayerMenu());
 		State.addState(State.States.OPTIONS, new StateOptions());
+		State.addState(State.States.LOADMAP, new StateLoadMap());
 		State.setState(State.States.MAIN_MENU);
 		
 		while(!Display.isCloseRequested() && running){
