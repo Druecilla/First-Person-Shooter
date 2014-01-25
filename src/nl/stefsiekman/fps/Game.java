@@ -62,7 +62,7 @@ public class Game {
 		State.addState(State.States.OPTIONS, new StateOptions());
 		State.addState(State.States.LOADMAP, new StateLoadMap());
 		State.addState(State.States.SINGLEPLAYER, new StateSingleplayer());
-		State.setState(State.States.SINGLEPLAYER);
+		State.setState(State.States.MAIN_MENU);
 		
 		while(!Display.isCloseRequested() && running){
 			Time.updateDelta();
