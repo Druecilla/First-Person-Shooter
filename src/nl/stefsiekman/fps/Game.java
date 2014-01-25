@@ -10,6 +10,7 @@ import nl.stefsiekman.fps.state.StateMainMenu;
 import nl.stefsiekman.fps.state.StateMultiplayerMenu;
 import nl.stefsiekman.fps.state.StateOptions;
 import nl.stefsiekman.fps.state.StateSingleplayerMenu;
+import nl.stefsiekman.fps.world.Camera;
 
 import org.lwjgl.LWJGLException;
 import org.lwjgl.Sys;
@@ -18,6 +19,8 @@ import org.lwjgl.opengl.DisplayMode;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.util.glu.GLU;
 import org.newdawn.slick.opengl.TextureImpl;
+
+import static org.lwjgl.opengl.GL11.*;
 
 public class Game {
 	
@@ -63,8 +66,8 @@ public class Game {
 			Display.setTitle("First Person Shooter");
 			Display.create();
 			
-			GL11.glEnable(GL11.GL_BLEND);
-			GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
+			glEnable(GL_BLEND);
+			glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 			
 			FontRenderer.init();
 			Input.init();
@@ -74,25 +77,32 @@ public class Game {
 	}
 	
 	public void init2D(){
-		GL11.glMatrixMode(GL11.GL_PROJECTION);
-		GL11.glLoadIdentity();
-		GL11.glOrtho(0, WIDTH, HEIGHT, 0, 1, -1);
-		GL11.glMatrixMode(GL11.GL_MODELVIEW);
-		GL11.glLoadIdentity();
+		glMatrixMode(GL_PROJECTION);
+		glLoadIdentity();
+		glOrtho(0, WIDTH, HEIGHT, 0, 1, -1);
+		glMatrixMode(GL_MODELVIEW);
+		glLoadIdentity();
 	}
 	
-	public void init3D(){
-		GL11.glMatrixMode(GL11.GL_PROJECTION);
-		GL11.glLoadIdentity();
-		GLU.gluPerspective(100, (float) WIDTH / HEIGHT, 0.001f, 1000);
-		GL11.glMatrixMode(GL11.GL_MODELVIEW);
+	public void init3D(Camera cam){
+		glMatrixMode(GL_PROJECTION);
+		glLoadIdentity();
+		GLU.gluPerspective(cam.fov, cam.as, cam.zNear, cam.zFar);
+		glMatrixMode(GL11.GL_MODELVIEW);
+		glLoadIdentity();
+		
+		// Translate camera
+		glTranslatef(cam.position.x, cam.position.y, cam.position.z);
+		glRotatef(cam.rotation.z, 1, 0, 0);
+		glRotatef(cam.rotation.z, 0, 1, 0);
+		glRotatef(cam.rotation.z, 0, 0, 1);
 	}
 	
 	private void clearScreen(){
-		GL11.glLoadIdentity();
-		GL11.glClear(GL11.GL_COLOR_BUFFER_BIT | GL11.GL_DEPTH_BUFFER_BIT);
+		glLoadIdentity();
+		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		TextureImpl.bindNone();
-		GL11.glColor3f(1.0f, 1.0f, 1.0f);
+		glColor3f(1.0f, 1.0f, 1.0f);
 	}
 	
 	public long getTime(){
