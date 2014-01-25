@@ -7,7 +7,7 @@ import org.lwjgl.opengl.GL11;
 public class ProgressBar extends Component{
 	
 	private int progresswidth = 0;
-	private int progress = 0;
+	private float progress = 0;
 	private int max = 100;
 	private int now = 0;
 
@@ -53,9 +53,9 @@ public class ProgressBar extends Component{
 	
 	@Override
 	protected void extraUpdate(){
-		progress = (int) ((float) now / (float) max * 100);
+		progress = (float) now / (float) max * 100;
 		
-		progresswidth = getWidth() / 100 * progress;
+		progresswidth = (int) ((float) getWidth() / 100 * progress);
 	}
 
 	@Override
