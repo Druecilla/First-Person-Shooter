@@ -19,6 +19,7 @@ public class StateSingleplayerMenu extends MenuScreen{
 			mapbutton.setTexture(map.getIcon());
 			mapbutton.setLocation(new Vector2i(30, maps * 100 + 10));
 			mapbutton.setSize(100, 100);
+			mapbutton.setActionCommand(map.getName());
 			
 			add(mapbutton);
 			maps += 1;
