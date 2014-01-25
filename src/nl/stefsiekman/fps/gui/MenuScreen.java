@@ -8,6 +8,7 @@ import nl.stefsiekman.fps.state.GameState;
 
 import org.lwjgl.opengl.GL11;
 import org.newdawn.slick.opengl.Texture;
+import org.newdawn.slick.opengl.TextureImpl;
 
 public abstract class MenuScreen extends GameState {
 	
@@ -64,6 +65,8 @@ public abstract class MenuScreen extends GameState {
 		GL11.glTexCoord2f(0, 1);
 		GL11.glVertex2i(0, Game.HEIGHT);
 		GL11.glEnd();
+		
+		TextureImpl.bindNone();
 		
 		for(Component component : components){
 			component.render();
