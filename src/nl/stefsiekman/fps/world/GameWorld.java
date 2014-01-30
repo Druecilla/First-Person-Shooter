@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import nl.stefsiekman.fps.Game;
+import nl.stefsiekman.fps.Util;
 import nl.stefsiekman.fps.math.Vector3f;
 
 public class GameWorld {
@@ -50,6 +51,45 @@ public class GameWorld {
 	}
 	
 	public static List<GameObject> loadWorldObjects(String file) {
+		String[] lines = Util.removeEmpty(file.split("\n"));
+		List<GameObject> objects = new ArrayList<>();
+		
+		for(String line : lines) {
+			String[] tokens = Util.removeEmpty(line.split(" "));
+			
+			if(tokens.length < 2) {
+				System.err.println("MAP LOADER ERROR: To few tokens on line: " + line);
+				continue;
+			}
+			
+			if(tokens[0].equals("shape")) {
+				if(tokens[1].equals("cube")) {
+					if(tokens.length < 4)
+						System.out.println("MAP LOADER ERROR: To few tokens for a cube, line: " + line);
+					
+					String[] coord1 = tokens[2].split(",");
+					if(coord1.length < 3)
+						System.err.println("MAP LOADER ERROR: To few tokens for coordinate, line: " + line);
+					Vector3f p1 = new Vector3f(
+							Float.parseFloat(coord1[0]),
+							Float.parseFloat(coord1[1]),
+							Float.parseFloat(coord1[2]));
+					
+					String[] coord2 = tokens[2].split(",");
+					if(coord2.length < 3)
+						System.err.println("MAP LOADER ERROR: To few tokens for coordinate, line: " + line);
+					Vector3f p2 = new Vector3f(
+							Float.parseFloat(coord2[0]),
+							Float.parseFloat(coord2[1]),
+							Float.parseFloat(coord2[2]));
+					
+					Vertex[] vertices = new Vertex[] {
+						new Vertex(new Vector3f()),
+					};
+				}
+			}
+		}
+		
 		return null;
 	}
 
