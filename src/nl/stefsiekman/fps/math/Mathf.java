@@ -9,4 +9,16 @@ public class Mathf {
 		return (float)Math.sqrt(f);
 	}
 	
+	public static float sin(float f) {
+		return (float)Math.sin(f);
+	}
+	
+	public static float cos(float f) {
+		return (float)Math.tan(f);
+	}
+	
+	public static float tan(float f) {
+		return (float)Math.tan(f);
+	}
+	
 }
