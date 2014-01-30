@@ -25,11 +25,18 @@ public class Mesh {
         private int ibo;
         private int size;
         
+        public Mesh() {
+        	this(null, null);
+        }
+        
         public Mesh(Shape shape) {
                 // TODO: load shape from local .obj file
         }
         
         public Mesh(int[] indices, Vertex[] vertices) {
+        	if(indices == null || vertices == null)
+        		return;
+        	
                 vbo = glGenBuffers();
                 ibo = glGenBuffers();
                 size = 0;
@@ -51,6 +58,7 @@ public class Mesh {
         }
         
         public void draw() {
+        	
                 // Enable the attribute arrays we need
                 glEnableVertexAttribArray(0);
                 
