@@ -44,4 +44,8 @@ public class Vector3f {
 		this.z = z;
 	}
 	
+	public String toString() {
+		return "(" + x + ", " + y + ", " + z + ")";
+	}
+	
 }
