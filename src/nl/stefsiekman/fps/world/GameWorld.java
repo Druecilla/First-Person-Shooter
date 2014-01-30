@@ -15,7 +15,7 @@ public class GameWorld {
 	
 	private static Camera camera;
 	
-	private List<GameObject> objects = new ArrayList<>();
+	private List<GameObject> objects = new ArrayList<GameObject>();
 	
 	public GameWorld(Vector3f size) {
 		
