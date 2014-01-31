@@ -30,4 +30,8 @@ public class Entity {
 	public void setRotation(Vector3f rotation){
 		this.rotation = rotation;
 	}
+
+	public Mesh getMesh(){
+		return mesh;
+	}
 }
