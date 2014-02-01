@@ -56,8 +56,6 @@ public class TextField extends Component {
 	
 	@Override
 	protected void extraUpdate(){
-		text += Input.getTypedText();
-		
 		if(Input.isKeyPressed(Keyboard.KEY_BACK)){
 			if(text.length() != 0){
 				text = text.substring(0, text.length() - 1);
@@ -74,6 +72,8 @@ public class TextField extends Component {
 			if(Input.isKeyPressed(Keyboard.KEY_RETURN)){
 				newAction(new ActionEvent(this));
 			}
+			
+			text += Input.getTypedText();
 		}else{
 			cursor = false;
 		}
