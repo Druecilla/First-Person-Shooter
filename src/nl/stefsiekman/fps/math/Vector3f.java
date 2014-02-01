@@ -19,6 +19,26 @@ public class Vector3f {
 	public float getLength() {
 		return Mathf.sqrt(x * x + y * y + z * z);
 	}
+	
+	/*
+	 * Returns a new vector of this one rotated (degrees)
+	 */
+	public Vector3f rotated(float x, float y, float z) {
+		Matrix4f m = new Matrix4f().initRotation(x, y, z);
+		return m.mul(this);
+	}
+	
+	/*
+	 * Rotates THIS vector (degrees)
+	 */
+	public void rotate(float x, float y, float z) {
+		Matrix4f m = new Matrix4f().initRotation(x, y, z);
+		Vector3f res = m.mul(this);
+		
+		x = res.x;
+		y = res.y;
+		z = res.z;
+	}
 
 	public float getX() {
 		return x;

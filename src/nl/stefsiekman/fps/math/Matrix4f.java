@@ -36,25 +36,31 @@ public class Matrix4f {
 	}
 	
 	public Matrix4f initRotation(float x, float y, float z) {
+		// Convert degrees to radians
+		x = Mathf.toRadians(x);
+		y = Mathf.toRadians(y);
+		z = Mathf.toRadians(z);
+		
 		Matrix4f rx = new Matrix4f();
+		Matrix4f ry = new Matrix4f();
+		Matrix4f rz = new Matrix4f();
+
+		rz.m[0][0] = Mathf.cos(z);	rz.m[0][1] = -Mathf.sin(z);	rz.m[0][2] = 0;	rz.m[0][3] = 0;
+		rz.m[1][0] = Mathf.sin(z);	rz.m[1][1] = Mathf.cos(z);	rz.m[1][2] = 0;	rz.m[1][3] = 0;
+		rz.m[2][0] = 0;				rz.m[2][1] = 0;				rz.m[2][2] = 1;	rz.m[2][3] = 0;
+		rz.m[3][0] = 0;				rz.m[3][1] = 0;				rz.m[3][2] = 0;	rz.m[3][3] = 1;
+
 		rx.m[0][0] = 1;	rx.m[0][1] = 0;				rx.m[0][2] = 0;				rx.m[0][3] = 0;
-		rx.m[1][0] = 0;	rx.m[1][1] = Mathf.cos(x);	rx.m[1][2] = Mathf.sin(x);	rx.m[1][3] = 0;
-		rx.m[2][0] = 0;	rx.m[2][1] = -Mathf.sin(x);	rx.m[2][2] = Mathf.cos(x);	rx.m[2][3] = 0;
+		rx.m[1][0] = 0;	rx.m[1][1] = Mathf.cos(x);	rx.m[1][2] = -Mathf.sin(x);	rx.m[1][3] = 0;
+		rx.m[2][0] = 0;	rx.m[2][1] = Mathf.sin(x);	rx.m[2][2] = Mathf.cos(x);	rx.m[2][3] = 0;
 		rx.m[3][0] = 0;	rx.m[3][1] = 0;				rx.m[3][2] = 0;				rx.m[3][3] = 1;
 
-		Matrix4f ry = new Matrix4f();
 		ry.m[0][0] = Mathf.cos(y);	ry.m[0][1] = 0;	ry.m[0][2] = -Mathf.sin(y);	ry.m[0][3] = 0;
 		ry.m[1][0] = 0;				ry.m[1][1] = 1;	ry.m[1][2] = 0;				ry.m[1][3] = 0;
 		ry.m[2][0] = Mathf.sin(y);	ry.m[2][1] = 0;	ry.m[2][2] = Mathf.cos(y);	ry.m[2][3] = 0;
 		ry.m[3][0] = 0;				ry.m[3][1] = 0;	ry.m[3][2] = 0;				ry.m[3][3] = 1;
-
-		Matrix4f rz = new Matrix4f();
-		rz.m[0][0] = Mathf.cos(z);	rz.m[0][1] = Mathf.sin(z);	rz.m[0][2] = 0;	rz.m[0][3] = 0;
-		rz.m[1][0] = -Mathf.sin(z);	rz.m[1][1] = Mathf.cos(z);	rz.m[1][2] = 0;	rz.m[1][3] = 0;
-		rz.m[2][0] = 0;				rz.m[2][1] = 0;				rz.m[2][2] = 1;	rz.m[2][3] = 0;
-		rz.m[3][0] = 0;				rz.m[3][1] = 0;				rz.m[3][2] = 0;	rz.m[3][3] = 1;
 		
-		m = rz.mul(ry.mul(rx)).m;
+		m = rz.mul(ry.mul(rx)).getM();
 		return this;
 	}
 	
@@ -85,6 +91,16 @@ public class Matrix4f {
 	
 	public void set(int m, int n, float value) {
 		this.m[m][n] = value;
+	}
+	
+	public float[][] getM() {
+		float[][] res = new float[4][4];
+		
+		for(int i = 0; i < 4; i++)
+			for(int j = 0; j < 4; j++)
+				res[i][j] = m[i][j];
+		
+		return res;
 	}
 	
 }
