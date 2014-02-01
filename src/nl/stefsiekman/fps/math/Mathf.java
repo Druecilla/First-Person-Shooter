@@ -14,11 +14,15 @@ public class Mathf {
 	}
 	
 	public static float cos(float f) {
-		return (float)Math.tan(f);
+		return (float)Math.cos(f);
 	}
 	
 	public static float tan(float f) {
 		return (float)Math.tan(f);
+	}
+	
+	public static float toRadians(float angle) {
+		return (float)Math.toRadians(angle);
 	}
 	
 }
