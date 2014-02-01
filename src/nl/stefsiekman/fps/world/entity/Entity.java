@@ -1,15 +1,15 @@
 package nl.stefsiekman.fps.world.entity;
 
 import nl.stefsiekman.fps.math.Vector3f;
-import nl.stefsiekman.fps.world.Mesh;
+import nl.stefsiekman.fps.world.MeshGroup;
 
 public class Entity {
 	
 	private Vector3f position;
 	private Vector3f rotation;
-	private Mesh mesh;
+	private MeshGroup mesh;
 	
-	public Entity(Vector3f position, Vector3f rotation, Mesh mesh){
+	public Entity(Vector3f position, Vector3f rotation, MeshGroup mesh){
 		this.position = position;
 		this.rotation = rotation;
 		this.mesh = mesh;
@@ -31,7 +31,7 @@ public class Entity {
 		this.rotation = rotation;
 	}
 
-	public Mesh getMesh(){
+	public MeshGroup getMesh(){
 		return mesh;
 	}
 }

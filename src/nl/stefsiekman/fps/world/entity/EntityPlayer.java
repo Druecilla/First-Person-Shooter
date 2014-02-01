@@ -1,14 +1,14 @@
 package nl.stefsiekman.fps.world.entity;
 
 import nl.stefsiekman.fps.math.Vector3f;
-import nl.stefsiekman.fps.world.Mesh;
+import nl.stefsiekman.fps.world.MeshGroup;
 
 public class EntityPlayer extends Entity {
 	
 	private Vector3f headrotation;
 	private int health = 100;
 	
-	public EntityPlayer(Vector3f position, Vector3f rotation, Mesh mesh, Vector3f headrotation){
+	public EntityPlayer(Vector3f position, Vector3f rotation, MeshGroup mesh, Vector3f headrotation){
 		super(position, rotation, mesh);
 		this.headrotation = headrotation;
 	}

@@ -2,13 +2,13 @@ package nl.stefsiekman.fps.world.entity;
 
 import nl.stefsiekman.fps.math.Vector3f;
 import nl.stefsiekman.fps.world.Camera;
-import nl.stefsiekman.fps.world.Mesh;
+import nl.stefsiekman.fps.world.MeshGroup;
 
 public class EntityPlayablePlayer extends EntityPlayer{
 	
 	private Camera camera;
 	
-	public EntityPlayablePlayer(Vector3f position, Vector3f rotation, Mesh mesh, Vector3f headrotation, Camera camera){
+	public EntityPlayablePlayer(Vector3f position, Vector3f rotation, MeshGroup mesh, Vector3f headrotation, Camera camera){
 		super(position, rotation, mesh, headrotation);
 		this.camera = camera;
 	}
