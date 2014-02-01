@@ -14,6 +14,7 @@ import static org.lwjgl.opengl.GL20.glDisableVertexAttribArray;
 import static org.lwjgl.opengl.GL20.glEnableVertexAttribArray;
 import static org.lwjgl.opengl.GL20.glVertexAttribPointer;
 import nl.stefsiekman.fps.Util;
+import nl.stefsiekman.fps.math.Vector3f;
 
 public class Mesh {
         
@@ -24,22 +25,24 @@ public class Mesh {
         private int vbo;
         private int ibo;
         private int size;
+        private Vector3f offset;
         
         public Mesh() {
-        	this(null, null);
+        	this(null, null, new Vector3f());
         }
         
         public Mesh(Shape shape) {
                 // TODO: load shape from local .obj file
         }
         
-        public Mesh(int[] indices, Vertex[] vertices) {
+        public Mesh(int[] indices, Vertex[] vertices, Vector3f offset) {
         	if(indices == null || vertices == null)
         		return;
         	
                 vbo = glGenBuffers();
                 ibo = glGenBuffers();
                 size = 0;
+                this.offset = offset;
                 
                 addVertices(indices, vertices);
         }
