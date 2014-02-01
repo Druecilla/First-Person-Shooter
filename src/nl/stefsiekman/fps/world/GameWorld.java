@@ -10,11 +10,14 @@ import java.util.List;
 
 import nl.stefsiekman.fps.Game;
 import nl.stefsiekman.fps.math.Vector3f;
+import nl.stefsiekman.fps.world.entity.Entity;
+import nl.stefsiekman.fps.world.entity.EntityPlayablePlayer;
 
 public class GameWorld {
 	
-	private static Camera camera;
+	private Camera camera;
 	
+	private EntityPlayablePlayer player;
 	private List<GameObject> objects = new ArrayList<GameObject>();
 	
 	public GameWorld(Vector3f size) {
@@ -40,13 +43,19 @@ public class GameWorld {
 	public void addStaticObject(GameObject object) {
 		objects.add(object);
 	}
+	
+	public void addEntity(Entity entity){
+		if(entity instanceof EntityPlayablePlayer){
+			this.player = (EntityPlayablePlayer) entity;
+		}
+	}
 
-	public static Camera getCamera() {
+	public Camera getCamera() {
 		return camera;
 	}
 
-	public static void setCamera(Camera camera) {
-		GameWorld.camera = camera;
+	public void setCamera(Camera camera) {
+		this.camera = camera;
 	}
 	
 	public static List<GameObject> loadWorldObjects(String file) {
